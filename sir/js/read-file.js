@@ -17,7 +17,6 @@
   }
 
   procesarCompras.addEventListener('click', () => { 
-
       const archivoCompras = document.getElementById('xls-compras');
       const hojaCompras = document.getElementById('xls-compras-hoja').value;
       const errorCompras = document.getElementById('error-compras');
@@ -27,10 +26,9 @@
         readXlsxFile(archivoCompras.files[0], { sheet: parseInt(hojaCompras) }).then((rows) => {
               console.log(rows)
           })
+          return;
       }
-      else{
-          mostrarError(errorCompras, 'Se necesita un archivo y número de hoja.')
-      }
+      mostrarError(errorCompras, 'Se necesita un archivo y número de hoja.')      
   });
 
   procesarVentas.addEventListener('click', () => {  
@@ -43,10 +41,9 @@
         readXlsxFile(archivoVentas.files[0], { sheet: parseInt(hojaVentas) }).then((rows) => {
             console.log(rows)
         })
+        return;
       }
-      else{
-          mostrarError(errorVentas, 'Se necesita un archivo y número de hoja.')
-      }
+      mostrarError(errorVentas, 'Se necesita un archivo y número de hoja.')      
   });
 
 })();
