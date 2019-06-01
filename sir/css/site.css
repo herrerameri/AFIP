@@ -1,0 +1,104 @@
+.card-form{
+    padding: 4%;
+    background: #343a40;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.card-form h3 {
+    font-size: 18px;
+    text-align: left;
+    color: #fff;
+}
+
+.card-form h1{
+    color: #fff;
+}
+
+.card-form label {
+    font-size: 1rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+.error {
+    color: #ff0000;
+    padding: 20px;
+}
+
+h2 {
+	font-size: 24px;
+	margin: 30px 0 10px;
+}
+
+h3 { 
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+h1{
+    font-size: 22px;
+}
+
+.page-header {
+    position: relative;
+    width: 100% !important;
+	background-repeat: no-repeat;
+	background-position: left 50%
+}
+
+@media (min-width:768px) {
+	.page-header {
+		height: 110px
+	}
+}
+
+.logo {
+    height: 63px;
+}
+
+.row .space {
+	padding: 20px 15px;
+}
+
+#error-detail{
+	font-size: 11px;
+    line-height: 11px;
+}
+
+.on-error .input-group-addon{
+    border-color: red;
+    background: rgba(255,0,0,0.1);
+}
+
+.on-error .form-control{
+    border-color: red;
+}
+
+.error-message {
+    display: none;
+    color: red;
+    font-weight: bold;
+}
+
+.invalid-feedback {
+    display: inline;
+    clear: both;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #dc3545 !important;
+}
+
+.valid-feedback {
+    display: inline;
+    clear: both;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #3e9859 !important;
+}
+
+body{
+    word-break: break-word;
+}
+
+hr{
+    border-top: 1px solid white;
+}
