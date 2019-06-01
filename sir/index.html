@@ -39,9 +39,12 @@
                     <input class="btn btn-secondary col-lg-8 mr-4" type="file" id="xls-ventas" />                
                     <input class="form-control col-lg-2 mt-1" type="number" value="1" id="xls-ventas-hoja" placeholder="Hoja" />                 
                 </div>     
-                <div class="pt-4">              
+                <div class="pt-4 pb-4">              
                     <button id="procesar-ventas" class="btn btn-info">PROCESAR</button>
-                </div>               
+                </div>  
+                <div class="invalid">
+                    <p id="error-ventas" class=""></p>
+                </div>              
             </div>                                
         </div>
         <div class="col-md-6">        
@@ -56,8 +59,11 @@
                     <input class="btn btn-secondary col-lg-8 mr-4" type="file" id="xls-compras" />                
                     <input class="form-control col-lg-2 mt-1" type="number" value="1" id="xls-compras-hoja" placeholder="Hoja" />                 
                 </div>     
-                <div class="pt-4">              
-                    <button id="procesar-ventas" class="btn btn-info">PROCESAR</button>
+                <div class="pt-4 pb-4">              
+                    <button id="procesar-compras" class="btn btn-info">PROCESAR</button>
+                </div>  
+                <div class="invalid">
+                    <p id="error-compras" class=""></p>
                 </div>               
             </div>                                
         </div>
@@ -68,4 +74,5 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/read-excel-file.min.js"></script>
+<script src="js/read-file.js"></script>
 <script src="js/popper.min.js"></script>

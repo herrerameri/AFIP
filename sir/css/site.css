@@ -79,9 +79,8 @@ h1{
     font-weight: bold;
 }
 
-.invalid-feedback {
+.invalid {
     display: inline;
-    clear: both;
     font-size: 1rem;
     font-weight: bold;
     color: #dc3545 !important;
