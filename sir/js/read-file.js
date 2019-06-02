@@ -31,11 +31,23 @@
       const archivoCompras = document.getElementById('xls-compras');
       const hojaCompras = document.getElementById('xls-compras-hoja').value;
       const errorCompras = document.getElementById('error-compras');
+      const resultadoCompras = document.getElementById('resultado-compras');
       limpiarError(errorCompras);
 
       if(inputValidas(archivoCompras, hojaCompras)){     
-        readXlsxFile(archivoCompras.files[0], { sheet: parseInt(hojaCompras) }).then((rows) => {
-              console.log(rows)
+        readXlsxFile(archivoCompras.files[0], { schema: schemaCompras, sheet: parseInt(hojaCompras) })
+          .then(({rows, err}) => {
+              if (err) {
+                mostrarMensaje(errorCompras, err);
+                return;
+              }
+              var compras = []; 
+              var lineasSalida = [];
+              rows.splice(-1,1); //quito la última row
+              rows.forEach((row) => compras.push(new Compra(row)));
+              compras.forEach((venta) => lineasSalida.push(venta.toString()));
+              mostrarMensaje(resultadoCompras, 'Se procesaron ' + lineasSalida.length + ' líneas.')              
+              return downloadTxt(lineasSalida);
           })
           return;
       }

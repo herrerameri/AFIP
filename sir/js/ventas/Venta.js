@@ -1,6 +1,6 @@
 class Venta {
   constructor(row){
-    this.Comprobante = new Comprobante(row);
+    this.Comprobante = new ComprobanteVenta(row);
     this.Cuit = this.getCuit(row, 11);
     this.Importes = new Importes(row);
     this.Facturacion = new Facturacion(row);
