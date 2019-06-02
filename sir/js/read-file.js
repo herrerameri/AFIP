@@ -16,6 +16,17 @@
     campoError.innerHTML = texto;
   }
 
+  function downloadTxt(lineas){
+      var body = lineas.join('\n');
+      var element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(body));
+      element.setAttribute('download', 'Salida.txt');
+      element.style.display = 'none';
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+  }
+
   procesarCompras.addEventListener('click', () => { 
       const archivoCompras = document.getElementById('xls-compras');
       const hojaCompras = document.getElementById('xls-compras-hoja').value;
@@ -38,11 +49,21 @@
       limpiarError(errorVentas);
 
       if(inputValidas(archivoVentas, hojaVentas)){
-        readXlsxFile(archivoVentas.files[0], { sheet: parseInt(hojaVentas) }).then((rows) => {
-            console.log(rows)
-        })
-        return;
-      }
+        readXlsxFile(archivoVentas.files[0], { schema: schemaVentas, sheet: parseInt(hojaVentas) })
+          .then(({rows, err}) => {
+              if (err) {
+                mostrarError(errorVentas, err);
+                return;
+              }
+              var ventas = []; 
+              var lineasSalida = [];
+              rows.splice(-1,1); //quito la última row
+              rows.forEach((row) => ventas.push(new Venta(row)));
+              ventas.forEach((venta) => lineasSalida.push(venta.toString()));              
+              return downloadTxt(lineasSalida);
+          })
+          return;
+      }              
       mostrarError(errorVentas, 'Se necesita un archivo y número de hoja.')      
   });
 
