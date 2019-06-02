@@ -86,7 +86,7 @@ h1{
     color: #dc3545 !important;
 }
 
-.valid-feedback {
+.valid {
     display: inline;
     clear: both;
     font-size: 1rem;

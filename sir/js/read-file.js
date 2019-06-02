@@ -12,8 +12,8 @@
     campoError.innerHTML = '';
   }
 
-  function mostrarError(campoError, texto){
-    campoError.innerHTML = texto;
+  function mostrarMensaje(campo, texto){
+    campo.innerHTML = texto;
   }
 
   function downloadTxt(lineas){
@@ -39,27 +39,29 @@
           })
           return;
       }
-      mostrarError(errorCompras, 'Se necesita un archivo y número de hoja.')      
+      mostrarMensaje(errorCompras, 'Se necesita un archivo y número de hoja.')      
   });
 
   procesarVentas.addEventListener('click', () => {  
       const archivoVentas = document.getElementById('xls-ventas');
       const hojaVentas = document.getElementById('xls-ventas-hoja').value;
       const errorVentas = document.getElementById('error-ventas');   
+      const resultadoVentas = document.getElementById('resultado-ventas');   
       limpiarError(errorVentas);
 
       if(inputValidas(archivoVentas, hojaVentas)){
         readXlsxFile(archivoVentas.files[0], { schema: schemaVentas, sheet: parseInt(hojaVentas) })
           .then(({rows, err}) => {
               if (err) {
-                mostrarError(errorVentas, err);
+                mostrarMensaje(errorVentas, err);
                 return;
               }
               var ventas = []; 
               var lineasSalida = [];
               rows.splice(-1,1); //quito la última row
               rows.forEach((row) => ventas.push(new Venta(row)));
-              ventas.forEach((venta) => lineasSalida.push(venta.toString()));              
+              ventas.forEach((venta) => lineasSalida.push(venta.toString()));
+              mostrarMensaje(resultadoVentas, 'Se procesaron ' + lineasSalida.length + ' líneas.')              
               return downloadTxt(lineasSalida);
           })
           return;
