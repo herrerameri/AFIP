@@ -38,7 +38,20 @@ class ComprobanteVenta {
   }
 
   getFechaComprobante(row){
+    try{
     var isString = row.comprobante.fecha.includes('/');
+    }
+    catch{
+      var anio = row.comprobante.fecha.getFullYear();
+      var mes = row.comprobante.fecha.getMonth() + 1;
+      var dia = row.comprobante.fecha.getDate();
+      if(anio < 100) anio = '20' + anio;
+      if(mes < 10) mes = '0' + mes;
+      if(dia < 10) dia = '0' + dia;
+
+      return anio + '' + mes + '' + dia; 
+    }
+    console.log(isString);
     if(!isString)
       return fromIntToDate(intRow);
     return fromStringToDate(row.comprobante.fecha);

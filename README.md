@@ -11,7 +11,9 @@ Esta herramienta permite transformar los datos de un `xlsx` o `xls` en un archiv
 ![captura tool](/sir/images/screenshot.png)
 
 ### Columnas que debe tener el archivo de entrada
-TBD
+VENTA - cabecera exacta que se espera encontrar en el archivo
+Tipo	Punto Venta	Número	Fecha	CUIT	Neto	Iva 10,5	Parcial	Código del bien	Cantidad
+
 
 ### Cómo utilizar esta herramienta
 Pasos: 
@@ -20,4 +22,9 @@ Pasos:
 2. Dentro de la carpeta AFIP que ha sido clonada abrir una terminal y correr: `node sir/app.js`
 3. Abrir el navegador en `http://localhost:3005`
 4. Subir el archivo e indicar la hoja a procesar
+
+### Importante
+El fichero una vez subido, no puede estar abierto.
+Si se editó, refrescar la página para volver a subirlo.
+Tiene que tener 1 fila última con algún contenido porque la última fila se omite.
 
