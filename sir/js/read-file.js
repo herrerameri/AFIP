@@ -45,7 +45,7 @@
               var lineasSalida = [];
               rows.splice(-1,1); //quito la última row
               rows.forEach((row) => compras.push(new Compra(row)));
-              compras.forEach((venta) => lineasSalida.push(venta.toString()));
+              compras.forEach((compra) => lineasSalida.push(compra.toString()));
               mostrarMensaje(resultadoCompras, 'Se procesaron ' + lineasSalida.length + ' líneas.')              
               return downloadTxt(lineasSalida);
           })

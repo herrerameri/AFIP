@@ -14,15 +14,21 @@ class Compra {
   }
 
   getTipoAfectacion(row){
+    if(!row.tipoAfectacion) return 'D';
     return row.tipoAfectacion;
   }
 
   toString(){
-      return this.Comprobante.Tipo + this.Comprobante.Fecha + this.Comprobante.PuntoVenta + 
-             this.Comprobante.Numero + this.Cuit + this.Bien.Descripcion + 
-             this.Importes.Neto + this.Importes.IvaFacturado + this.Importes.Iva105 +
-             this.Retencion.Monto + this.Retencion.Motivo +
-             this.Periodos.Pago + this.Periodos.DDJJ + this.TipoAfectacion;
+    let defaultPeriod = '000000'
+    if(this.Comprobante.Tipo == '003' || this.Comprobante.Tipo == '112')
+    {
+      this.Periodos.Pago = defaultPeriod;
+    }
+    return this.Comprobante.Tipo + this.Comprobante.Fecha + this.Comprobante.PuntoVenta + 
+            this.Comprobante.Numero + this.Cuit + this.Bien.Descripcion + 
+            this.Importes.Neto + this.Importes.IvaFacturado + this.Importes.Iva105 +
+            this.Retencion.Monto + this.Retencion.Motivo +
+            this.Periodos.Pago + this.Periodos.DDJJ + this.TipoAfectacion;
   }
 }
 
